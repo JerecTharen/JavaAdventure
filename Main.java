@@ -18,7 +18,7 @@ public class Main{
     Commands commandLine = new Commands(newName);
     // Player playerCharacter = new Player(newName);
     System.out.println("Your name is: " + commandLine.playerCharacter.name);
-
+    commandLine.SayHelp();
     commandLine.Desc();
     commandLine.HandleCommand();
 

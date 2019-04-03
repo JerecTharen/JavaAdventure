@@ -20,6 +20,16 @@ public class Commands{
     playerCharacter = new Player(newName);
   }
 
+  public void HelpString(String cmd, String cDesc){
+    System.out.println("Type: \"" + cmd + "\" to " + cDesc +".");
+  }
+  public void SayHelp(){
+    HelpString("desc", "see where you are");
+    HelpString("help", "see this menu");
+    HelpString("move <direction>", "move in a specified direction");
+    HelpString("quit", "exit the game");
+  }
+
   public void Desc(){
     System.out.println("You are in: " + gameLocations[playerCharacter.GetLocation()].name);
     System.out.println("Around you it is: " + gameLocations[playerCharacter.GetLocation()].description);
@@ -27,15 +37,26 @@ public class Commands{
   public void HandleCommand(){
     String command = userInput.nextLine();
     String cmd = command.toUpperCase();
+    boolean quit = false;
     switch(cmd){
       case "DESC":
         Desc();
+        break;
+      case "HELP":
+        SayHelp();
         break;
       case "MOVE NORTH":
         playerCharacter.MovePlayer(1);
         Desc();
         break;
+      case "QUIT":
+        quit = true;
+        break;
+      default:
+        System.out.println("That is not a recognized command. Try typing \"help\"");
     }
-    HandleCommand();
+    if(!quit){
+      HandleCommand();
+    }
   }
 }
