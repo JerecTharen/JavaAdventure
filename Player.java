@@ -5,7 +5,7 @@ public class Player{
   public String name;
   private int health = 10;
   private int attackDmg = 3;
-  //location variable will go here
+  private int locationId = 0;
 
   //Constructor
   Player(String enterName){
@@ -25,6 +25,9 @@ public class Player{
   public void ChangeDamage(int amount){
     attackDmg = amount;
   }
+  public void MovePlayer(int newLocation){
+    locationId = newLocation;
+  }
 
   //Getters
   public int GetHealth(){
@@ -32,5 +35,8 @@ public class Player{
   }
   public int DoDamage(){
     return attackDmg;
+  }
+  public int GetLocation(){
+    return locationId;
   }
 }
