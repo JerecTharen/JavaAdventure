@@ -1,5 +1,7 @@
 package Adventure;
 
+import Adventure.AllLocations;
+
 public class Player{
   //variable initialization
   public String name;
@@ -25,8 +27,42 @@ public class Player{
   public void ChangeDamage(int amount){
     attackDmg = amount;
   }
-  public void MovePlayer(int newLocation){
-    locationId = newLocation;
+  public void MovePlayer(String direction){
+    switch(direction){
+      case "NORTH":
+        if(AllLocations.gameLocations[locationId].locationConnections.get(0) != -1){
+          locationId = AllLocations.gameLocations[locationId].locationConnections.get(0);
+        }
+        else{
+          System.out.println("You cannot go that way!");
+        }
+        break;
+      case "EAST":
+        if(AllLocations.gameLocations[locationId].locationConnections.get(1) != -1){
+          locationId = AllLocations.gameLocations[locationId].locationConnections.get(1);
+        }
+        else{
+          System.out.println("You cannot go that way!");
+        }
+        break;
+      case "SOUTH":
+        if(AllLocations.gameLocations[locationId].locationConnections.get(2) != -1){
+          locationId = AllLocations.gameLocations[locationId].locationConnections.get(2);
+        }
+        else{
+          System.out.println("You cannot go that way!");
+        }
+        break;
+      case "WEST":
+        if(AllLocations.gameLocations[locationId].locationConnections.get(3) != -1){
+          locationId = AllLocations.gameLocations[locationId].locationConnections.get(3);
+        }
+        else{
+          System.out.println("You cannot go that way!");
+        }
+        break;
+    }
+    // locationId = newLocation;
   }
 
   //Getters

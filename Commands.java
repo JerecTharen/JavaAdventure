@@ -3,20 +3,16 @@ package Adventure;
 import java.util.Scanner;
 import Adventure.Player;
 import Adventure.Location;
+import Adventure.AllLocations;
 
 public class Commands{
 
   public static Player playerCharacter;
-  public static Location[] gameLocations = {
-    new Location("Entry-Hall", "A hub to other rooms", 0),
-    new Location("Storage-Room", "An Empty Room", 1),
-    new Location("Goblin-Room", "A cave like room where a goblin attacks", 2),
-    new Location("Ghoul-Room", "An old kitchen that's haunted by a ghoul", 3),
-    new Location("Treasure-Room", "An old treasure vault with some good loot", 4),
-  };
+
   public static Scanner userInput = new Scanner(System.in);
 
   public Commands(String newName){
+    System.out.println("General Kenbobi!!");
     playerCharacter = new Player(newName);
   }
 
@@ -31,8 +27,8 @@ public class Commands{
   }
 
   public void Desc(){
-    System.out.println("You are in: " + gameLocations[playerCharacter.GetLocation()].name);
-    System.out.println("Around you it is: " + gameLocations[playerCharacter.GetLocation()].description);
+    System.out.println("You are in: " + AllLocations.gameLocations[playerCharacter.GetLocation()].name);
+    System.out.println("Around you it is: " + AllLocations.gameLocations[playerCharacter.GetLocation()].description);
   }
   public void HandleCommand(){
     String command = userInput.nextLine();
@@ -46,7 +42,19 @@ public class Commands{
         SayHelp();
         break;
       case "MOVE NORTH":
-        playerCharacter.MovePlayer(1);
+        playerCharacter.MovePlayer("NORTH");
+        Desc();
+        break;
+      case "MOVE EAST":
+        playerCharacter.MovePlayer("EAST");
+        Desc();
+        break;
+      case "MOVE SOUTH":
+        playerCharacter.MovePlayer("SOUTH");
+        Desc();
+        break;
+      case "MOVE WEST":
+        playerCharacter.MovePlayer("WEST");
         Desc();
         break;
       case "QUIT":
