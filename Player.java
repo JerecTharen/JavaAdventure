@@ -65,6 +65,21 @@ public class Player{
     // locationId = newLocation;
   }
 
+  public void CheckDirections(){
+    if(AllLocations.gameLocations[locationId].locationConnections.get(0) != -1){
+      System.out.println("There is a passage to the North");
+    }
+    if(AllLocations.gameLocations[locationId].locationConnections.get(1) != -1){
+      System.out.println("There is a passage to the East");
+    }
+    if(AllLocations.gameLocations[locationId].locationConnections.get(2) != -1){
+      System.out.println("There is a passage to the South");
+    }
+    if(AllLocations.gameLocations[locationId].locationConnections.get(3) != -1){
+      System.out.println("There is a passage to the West");
+    }
+  }
+
   //Getters
   public int GetHealth(){
     return health;

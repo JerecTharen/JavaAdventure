@@ -24,11 +24,13 @@ public class Commands{
     HelpString("help", "see this menu");
     HelpString("move <direction>", "move in a specified direction");
     HelpString("quit", "exit the game");
+    HelpString("directions", "know which directions you can go");
   }
 
   public void Desc(){
     System.out.println("You are in: " + AllLocations.gameLocations[playerCharacter.GetLocation()].name);
     System.out.println("Around you it is: " + AllLocations.gameLocations[playerCharacter.GetLocation()].description);
+    playerCharacter.CheckDirections();
   }
   public void HandleCommand(){
     String command = userInput.nextLine();
@@ -59,6 +61,9 @@ public class Commands{
         break;
       case "QUIT":
         quit = true;
+        break;
+      case "DIRECTIONS":
+        playerCharacter.CheckDirections();
         break;
       default:
         System.out.println("That is not a recognized command. Try typing \"help\"");
